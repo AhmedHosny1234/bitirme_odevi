@@ -1,5 +1,4 @@
 
-import 'package:flutter/foundation.dart';
 
 class Meakn{
 final String mekanadi ;

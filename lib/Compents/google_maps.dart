@@ -22,7 +22,7 @@ class _MyAppState extends State {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return  SizedBox(
 
             width: 400,
             height: 250,

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/screens/details.dart';
 class item extends StatelessWidget {
@@ -10,7 +9,7 @@ class item extends StatelessWidget {
 
       child: Column(
         children: [
-          SizedBox(height: 5,),
+          const SizedBox(height: 5,),
           Container(
 
             decoration: BoxDecoration(
@@ -22,10 +21,10 @@ class item extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text("Atatürk Evi Müzesi",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
+                    const Text("Atatürk Evi Müzesi",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
                     ),),
-                    SizedBox(height: 20,),
-                    Row(
+                    const SizedBox(height: 20,),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text("Kültür, Atatürk Cd. No:34, 33010 İçel Merkez/Mersin",style:TextStyle(fontSize: 10),),
@@ -39,7 +38,14 @@ class item extends StatelessWidget {
                           child: Container(
 
                             width: 100, height: 40,
-                            child: Row(
+                            decoration: const BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15.0),
+                                bottomRight: Radius.circular(15.0),
+                              ),
+                            ),
+                            child: const Row(
 
                               children: [
                                 Icon(Icons.location_on),
@@ -47,38 +53,31 @@ class item extends StatelessWidget {
                                 Text("Konum",style: TextStyle(fontSize: 17),)
                               ],
                             ),
-                            decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(15.0),
-                                bottomRight: Radius.circular(15.0),
-                              ),
-                            ),
                           ),
                           onTap: (){
 
                             print("object");
                           },
                         ),
-                        SizedBox(width: 40,),
+                        const SizedBox(width: 40,),
                         InkWell(
                           child: Container(
 
                             width: 100, height: 40,
-                            child: Row(
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15.0),
+                                bottomRight: Radius.circular(15.0),
+                              ),
+                            ),
+                            child: const Row(
 
                               children: [
                                 Icon(Icons.phone),
                                 SizedBox(width: 10,),
                                 Text("ARA" ,style:  TextStyle(fontSize: 17),)
                               ],
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(15.0),
-                                bottomRight: Radius.circular(15.0),
-                              ),
                             ),
                           ),
                           onTap: (){
@@ -94,8 +93,8 @@ class item extends StatelessWidget {
                   ],
                 ),
                 Container(
-                    padding: EdgeInsets.only(right: 7),
-                    child: Image(image: AssetImage("images/Untitled design (1).png" ,),width: 120,height: 150,)),
+                    padding: const EdgeInsets.only(right: 7),
+                    child: const Image(image: AssetImage("images/Untitled design (1).png" ,),width: 120,height: 150,)),
 
               ],
 

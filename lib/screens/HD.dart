@@ -2,7 +2,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,6 +9,8 @@ import 'package:http/http.dart' as http;
 
 
 class Hava extends StatefulWidget {
+  const Hava({super.key});
+
 
 
   @override
@@ -23,6 +24,7 @@ class HavaState extends State<Hava> {
   String il = "";
   bool error=false;
   String errormasege="";
+  @override
   initState() {
     fetchusers();
   }
@@ -31,56 +33,56 @@ class HavaState extends State<Hava> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      backgroundColor: Color(0xFF629BF2),
+      backgroundColor: const Color(0xFF629BF2),
 
 
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
-        title: Text("Hava durumu", style: TextStyle(color: Colors.white),),
-        backgroundColor: Color(0xFF629BF2),
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text("Hava durumu", style: TextStyle(color: Colors.white),),
+        backgroundColor: const Color(0xFF629BF2),
       ),
 
       body: HD.isEmpty?  Center(child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          SizedBox(child: CircularProgressIndicator() , width: 100,height: 100,),
+          const SizedBox(width: 100,height: 100,child: CircularProgressIndicator() ,),
           error?  AlertDialog(
 
-            title: Text(errormasege ,style: TextStyle(fontSize: 21),),
+            title: Text(errormasege ,style: const TextStyle(fontSize: 21),),
             actions: [
               TextButton(onPressed: (){
                 Navigator.pop(context,"ok");
-              }, child: Text("OK"))
+              }, child: const Text("OK"))
             ],
-          ):Text("")
+          ):const Text("")
         ],
       )):
       SingleChildScrollView(
         child:
         Column(
           children: [
-            Text(il, style: TextStyle(fontSize: 25,
+            Text(il, style: const TextStyle(fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.white),),
-            Text("Bugün Hava Durumu",
+            const Text("Bugün Hava Durumu",
               style: TextStyle(fontSize: 14, color: Colors.white),),
-            Container(
+            SizedBox(
               height: 210,
               width: 240,
               child: Stack(
                 children: [
 
                   Container(
+                    alignment: Alignment.topLeft,
                     child: Image.network(
                       HD[0]['icon'],
                       scale: 3,),
-                    alignment: Alignment.topLeft,
                   ),
                   Container(
                     alignment: Alignment.bottomRight,
                     child: Text("${HD[0]['degree'].substring(0, 4)}°",
-                      style: TextStyle(fontSize: 85,
+                      style: const TextStyle(fontSize: 85,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),),
                   ),
@@ -91,27 +93,27 @@ class HavaState extends State<Hava> {
             ),
 
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.all(Radius.circular(20))
               ),
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Row(children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
                     Text("Beklenen Hadise : ${HD[0]['description']}",
-                      style: TextStyle(color: Colors.white, fontSize: 18),),
+                      style: const TextStyle(color: Colors.white, fontSize: 18),),
                     Text("Nem (%)	 : ${HD[0]['humidity']}",
-                      style: TextStyle(color: Colors.white, fontSize: 18),),
+                      style: const TextStyle(color: Colors.white, fontSize: 18),),
                     Text("En Düşük	 : ${HD[0]['min']}",
-                      style: TextStyle(color: Colors.white, fontSize: 18),),
+                      style: const TextStyle(color: Colors.white, fontSize: 18),),
                     Text("En Yüksek	 : ${HD[0]['max']} °C.",
-                      style: TextStyle(color: Colors.white, fontSize: 18),),
+                      style: const TextStyle(color: Colors.white, fontSize: 18),),
                   ],),
-                SizedBox(width: 85,),
+                const SizedBox(width: 85,),
                 Container(
 
                   child: Column(
@@ -119,14 +121,14 @@ class HavaState extends State<Hava> {
                       Container(
 
 
-                          child: Icon(
+                          child: const Icon(
                             Icons.nights_stay_sharp, size: 65, color: Colors
                               .white,)
                       ),
                       Container(
 
                         child: Text("${HD[0]['night'].substring(0, 4)}°C",
-                          style: TextStyle(fontSize: 24,
+                          style: const TextStyle(fontSize: 24,
                               fontWeight: FontWeight.bold,
                               color: Colors.white),),
                       ),
@@ -137,10 +139,10 @@ class HavaState extends State<Hava> {
             ),
 
             Container(
-              padding: EdgeInsets.only(left: 15),
+              padding: const EdgeInsets.only(left: 15),
               alignment: Alignment.centerLeft,
-              child: Text("Gelcek Günler", style: TextStyle(fontSize: 21),),),
-            Container(
+              child: const Text("Gelcek Günler", style: TextStyle(fontSize: 21),),),
+            SizedBox(
               width: double.infinity,
               height: 400,
               child: ListView.builder(
@@ -159,17 +161,17 @@ class HavaState extends State<Hava> {
 
 
                       title: Text(HD[index]['day'],
-                        style: TextStyle(color: Colors.white, fontSize: 20),),
+                        style: const TextStyle(color: Colors.white, fontSize: 20),),
                       subtitle: Text(HD[index]['description'],
-                        style: TextStyle(color: Colors.white),),
+                        style: const TextStyle(color: Colors.white),),
                       trailing: Column(
                         children: [
 
                           Text("${HD[index]['degree'].substring(0, 4)}°",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.white, fontSize: 23),),
                           Text(
-                            "Nem : ${HD[index]['humidity']}%", style: TextStyle(
+                            "Nem : ${HD[index]['humidity']}%", style: const TextStyle(
                               color: Colors.white, fontSize: 15),),
 
                         ],

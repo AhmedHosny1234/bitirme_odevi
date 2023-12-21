@@ -1,11 +1,9 @@
 
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/Compents/item.dart';
 
-import 'details.dart';
 
 class SecondRoute extends StatelessWidget {
   const SecondRoute({super.key});
@@ -27,10 +25,10 @@ class SecondRoute extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Atatürk Evi Müzesi",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
+                        const Text("Atatürk Evi Müzesi",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
                         ),),
-                        SizedBox(height: 20,),
-                        Row(
+                        const SizedBox(height: 20,),
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text("Kültür, Atatürk Cd. No:34, 33010 İçel Merkez/Mersin",style:TextStyle(fontSize: 10),),
@@ -44,7 +42,14 @@ class SecondRoute extends StatelessWidget {
                               child: Container(
 
                                 width: 100, height: 40,
-                                child: Row(
+                                decoration: const BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15.0),
+                                    bottomRight: Radius.circular(15.0),
+                                  ),
+                                ),
+                                child: const Row(
 
                                   children: [
                                     Icon(Icons.location_on),
@@ -52,38 +57,31 @@ class SecondRoute extends StatelessWidget {
                                     Text("Konum",style: TextStyle(fontSize: 17),)
                                   ],
                                 ),
-                                decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(15.0),
-                                    bottomRight: Radius.circular(15.0),
-                                  ),
-                                ),
                               ),
                               onTap: (){
 
                                 print("object");
                               },
                             ),
-                            SizedBox(width: 40,),
+                            const SizedBox(width: 40,),
                             InkWell(
                               child: Container(
 
                                 width: 100, height: 40,
-                                child: Row(
+                                decoration: const BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15.0),
+                                    bottomRight: Radius.circular(15.0),
+                                  ),
+                                ),
+                                child: const Row(
 
                                   children: [
                                     Icon(Icons.phone),
                                     SizedBox(width: 10,),
                                     Text("ARA" ,style:  TextStyle(fontSize: 17),)
                                   ],
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(15.0),
-                                    bottomRight: Radius.circular(15.0),
-                                  ),
                                 ),
                               ),
                               onTap: (){
@@ -99,8 +97,8 @@ class SecondRoute extends StatelessWidget {
                       ],
                     ),
                     Container(
-                        padding: EdgeInsets.only(right: 7),
-                        child: Image(image: AssetImage("images/Untitled design (1).png" ,),width: 120,height: 150,)),
+                        padding: const EdgeInsets.only(right: 7),
+                        child: const Image(image: AssetImage("images/Untitled design (1).png" ,),width: 120,height: 150,)),
 
                   ],
 
@@ -121,16 +119,16 @@ class SecondRoute extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon:Icon(Icons.arrow_back
+          icon:const Icon(Icons.arrow_back
             ,color: Colors.white,) ,
            onPressed: () {
       Navigator.pop(context);
       },
         ),
           backgroundColor: const Color(0xFF0C2E51),
-        title: Column(children: [
-          new Center(child: new Text("Müzler",style: TextStyle(color: Colors.white), textAlign: TextAlign.center)),
-          new Center(child: new Text("sayi 10",style: TextStyle(color: Colors.white), textAlign: TextAlign.center)),
+        title: const Column(children: [
+          Center(child: Text("Müzler",style: TextStyle(color: Colors.white), textAlign: TextAlign.center)),
+          Center(child: Text("sayi 10",style: TextStyle(color: Colors.white), textAlign: TextAlign.center)),
 
         ],)
       ),
@@ -138,7 +136,7 @@ class SecondRoute extends StatelessWidget {
           itemCount: 12,
           itemBuilder: (context,num){
 
-            return item();
+            return const item();
           }),
 
     );

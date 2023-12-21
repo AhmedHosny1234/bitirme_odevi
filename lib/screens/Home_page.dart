@@ -1,8 +1,6 @@
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:expand_widget/expand_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -19,23 +17,23 @@ class MyApp extends StatelessWidget {
     return  Scaffold(
 
         appBar: AppBar(title: Row(
-          children: [SizedBox (width: 80),Image.asset("images/Untitled design (1).png", scale: 5,)],
-        ) ,backgroundColor: const Color(0xFF0C2E51) ,leading: Icon(Icons.search ,size: 30,color: Colors.white,) ,),
+          children: [const SizedBox (width: 80),Image.asset("images/Untitled design (1).png", scale: 5,)],
+        ) ,backgroundColor: const Color(0xFF0C2E51) ,leading: const Icon(Icons.search ,size: 30,color: Colors.white,) ,),
         body:    SingleChildScrollView(
           child: Column(
             children: [
-              CarouselSliderWithDots(),
-              SizedBox(height: 10,),
+              const CarouselSliderWithDots(),
+              const SizedBox(height: 10,),
 
-              Text("Katgori",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold ),),
-              SizedBox(height: 10,),
+              const Text("Katgori",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold ),),
+              const SizedBox(height: 10,),
               Row(children: [
-                SizedBox(width:20 ),
+                const SizedBox(width:20 ),
                 Flexible(
                   child: Column(
                       children: [
                         InkWell(
-                          child: Image(image: AssetImage("images/museum (1).png" ,),width: 100,height: 130,),
+                          child: const Image(image: AssetImage("images/museum (1).png" ,),width: 100,height: 130,),
                           onTap: (){
                             Navigator.push(
                               context,
@@ -44,16 +42,16 @@ class MyApp extends StatelessWidget {
                           },
 
                         ),
-                        Text("Müzler", textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold ),),
+                        const Text("Müzler", textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold ),),
                       ]
                   ),
                 ),
-                SizedBox(width:40 ),
+                const SizedBox(width:40 ),
                 Flexible(
                   child: Column(
                       children: [
                         InkWell(
-                          child: Image(image: AssetImage("images/ancient.png" ,),width: 100,height: 130,),
+                          child: const Image(image: AssetImage("images/ancient.png" ,),width: 100,height: 130,),
 
                           onTap: (){
                             Navigator.push(
@@ -62,16 +60,16 @@ class MyApp extends StatelessWidget {
                             );
                           },
                         ),
-                        Text("antik kentler", textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold ),),
+                        const Text("antik kentler", textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold ),),
                       ]
                   ),
                 ),
-                SizedBox(width: 40,),
+                const SizedBox(width: 40,),
                 Flexible(
                   child: Column(
                       children: [
                         InkWell(
-                          child: Image(image: AssetImage("images/castle (1).png" ,),width: 100,height: 130,),
+                          child: const Image(image: AssetImage("images/castle (1).png" ,),width: 100,height: 130,),
 
                           onTap: (){
                             Navigator.push(
@@ -81,7 +79,7 @@ class MyApp extends StatelessWidget {
                           },
                         ),
                         Container(
-                          child: Text("Kalelerv ve tarihi yaplilar",
+                          child: const Text("Kalelerv ve tarihi yaplilar",
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 18
                                 ,fontWeight: FontWeight.bold ),
@@ -95,14 +93,14 @@ class MyApp extends StatelessWidget {
                 ),
 
               ],),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               Row(children: [
 
                 Flexible(
                   child: Column(
                       children: [
                         InkWell(
-                          child: Image(image: AssetImage("images/columns.png" ,),width: 100,height: 130,),
+                          child: const Image(image: AssetImage("images/columns.png" ,),width: 100,height: 130,),
 
                           onTap: (){
                             Navigator.push(
@@ -111,17 +109,17 @@ class MyApp extends StatelessWidget {
                             );
                           },
                         ),
-                        Text("Arkeolojik siteler", style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ), ),
+                        const Text("Arkeolojik siteler", style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ), ),
                       ]
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Flexible(
 
                   child: Column(
                       children: [
                         InkWell(
-                          child: Image(image: AssetImage("images/obelisk.png" ,),width: 100,height: 130,),
+                          child: const Image(image: AssetImage("images/obelisk.png" ,),width: 100,height: 130,),
 
                           onTap: (){
                             Navigator.push(
@@ -130,7 +128,7 @@ class MyApp extends StatelessWidget {
                             );
                           },
                         ),
-                        Container(
+                        const SizedBox(
                           width: 120,
                           child: Text("Anıtlar ve anıt meydanlar",
                             textAlign: TextAlign.center,
@@ -145,54 +143,54 @@ class MyApp extends StatelessWidget {
 
 
               ],),
-              SizedBox(height: 10,),
-              Text("Servisler",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold ),),
+              const SizedBox(height: 10,),
+              const Text("Servisler",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold ),),
               Row(children: [
-                SizedBox(width:20 ),
+                const SizedBox(width:20 ),
                 Flexible(
                   child: Column(
                       children: [
                         InkWell(
-                          child: Icon(FontAwesomeIcons.personPraying,
+                          child: const Icon(FontAwesomeIcons.personPraying,
                             size: 80,
                           ),
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  namaz()),
+                              MaterialPageRoute(builder: (context) =>  const namaz()),
                             );
                           },
                         ),
-                        Text("Namaz Vakitlei", textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ),),
+                        const Text("Namaz Vakitlei", textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ),),
                       ]
                   ),
                 ),
-                SizedBox(width:40 ),
+                const SizedBox(width:40 ),
                 Flexible(
                   child: Column(
                       children: [
                         InkWell(
-                          child: Icon(FontAwesomeIcons.pills,
+                          child: const Icon(FontAwesomeIcons.pills,
                             size: 80,
                           ),
                           onTap: (){
 
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  api()),
+                              MaterialPageRoute(builder: (context) =>  const api()),
                             );
                           },
                         ),
-                        Text("Nöbetçi Eczaneleri", textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ),),
+                        const Text("Nöbetçi Eczaneleri", textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ),),
                       ]
                   ),
                 ),
-                SizedBox(width: 40,),
+                const SizedBox(width: 40,),
                 Flexible(
                   child: Column(
                       children: [
                         InkWell(
-                          child: Icon(FontAwesomeIcons.language,
+                          child: const Icon(FontAwesomeIcons.language,
                             size: 75,
                           ),
                           onTap: (){
@@ -200,7 +198,7 @@ class MyApp extends StatelessWidget {
                           },
                         ),
                         Container(
-                          child: Text("Türceme",
+                          child: const Text("Türceme",
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 18
                                 ,fontWeight: FontWeight.bold ),
@@ -230,17 +228,17 @@ class MyApp extends StatelessWidget {
                               children: [
 
                                 InkWell(
-                                  child: Icon(Icons.cloud,
+                                  child: const Icon(Icons.cloud,
                                     size: 80,
                                   ),
                                   onTap: (){
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) =>  Hava()),
+                                      MaterialPageRoute(builder: (context) =>  const Hava()),
                                     );
                                   },
                                 ),
-                                Text("Hava durumu", style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ), ),
+                                const Text("Hava durumu", style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ), ),
                               ]
                           ),
                         ),
