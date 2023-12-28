@@ -1,14 +1,27 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:flutter_share/flutter_share.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../Compents/google_maps.dart';
 
 class details extends StatelessWidget {
-  const details({super.key});
+
+  QueryDocumentSnapshot Muze;
+   details({
+    required this.Muze
+});
+
+
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+
       appBar: AppBar(
           leading: IconButton(
             icon:const Icon(Icons.arrow_back
@@ -20,10 +33,17 @@ class details extends StatelessWidget {
           ),
           backgroundColor: const Color(0xFF0C2E51),
           title:
-            const Center(child: Text("Atatürk Evi Müzesi",style: TextStyle(color: Colors.white), textAlign: TextAlign.center)),
-          actions: const [
+             Center(child: Text("${Muze['Name']}",style: TextStyle(color: Colors.white), textAlign: TextAlign.center)),
+          actions:  [
 
-            Icon(Icons.share,color: Colors.white, size: 30,),
+            IconButton(onPressed: () {
+              Share.share('${Muze['Name']} https://www.google.com/maps/search/?api=1&query=${Muze['Latitude']},${Muze['Longitude']}', subject: 'Look what I made!');
+
+              print("object");
+
+            }, icon:  Icon(Icons.share,color: Colors.white, size: 30,)
+
+            ),
             SizedBox(width: 10,),
           ],
       ),
@@ -35,47 +55,47 @@ class details extends StatelessWidget {
 
              Container(
 
-               margin: const EdgeInsets.all(20.0),
-              width: 120, height: 30,
+               margin: const EdgeInsets.only(top: 20,left: 20),
+              width: 80, height: 30,
               decoration: BoxDecoration(
                 color: Colors.grey.shade300,
                 borderRadius: const BorderRadius.all(Radius.circular(7.0),),
               ),
-              child: const Row(
+              child:  Row(
 
                 children: [
                   SizedBox(width: 20,),
                   Icon(Icons.remove_red_eye_sharp),
                   SizedBox(width: 7,),
-                  Text("1400",style: TextStyle(fontSize: 17),)
+                  Text("${Muze['count']}",style: TextStyle(fontSize: 17),)
                 ],
               ),
             ),
 
             Container(
 
-
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
                     children: [
-                      const Text("Atatürk Evi Müzesi",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
+                       Text("${Muze['Name']} ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
                       ),),
-                      const SizedBox(height: 20,),
+                      const SizedBox(height: 2,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: const Text("açıklama yeri",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 18
-                                  ,fontWeight: FontWeight.bold ),
-                              maxLines: 2,
+                          SizedBox(
+                            width: 250,
+                            child: Text(
+                              "${Muze['Aciklama']}",
+                              maxLines: 4,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
+
                         ],
                       ),
 
@@ -84,39 +104,41 @@ class details extends StatelessWidget {
 
                     ],
                   ),
+
                   Container(
+                   alignment: Alignment.centerRight,
                     margin: const EdgeInsets.all(10.0),
-                   
-                      child: const Image(image: AssetImage("images/C7922E1A-BF1B-4BA2-B7D9-F980AAA7B6B6-2048x1606.jpeg" ,),width: 120,height: 150,)),
+                      child:  Image(image: NetworkImage("${Muze['ResimURL ']}"),width: 120,height: 150,)),
 
                 ],
 
               ),
             ),
-            
-            Container(
-              margin: const EdgeInsets.only(bottom: 10),
-              decoration: BoxDecoration(
+              Divider(
 
-                  border: Border.all(width: 3.0,color: Colors.lightBlue.shade200),
-                  borderRadius: const BorderRadius.all(Radius.circular(20))
               ),
+            if(Muze['dates'])
+            getList(),
+
+
+            Container(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(width: 140,),
-                  
+
                   InkWell(
                     onTap: (){
+                      final Uri url = Uri.parse(Muze['link']);
 
+                      launchUrl(url);
                     },
                     child: Container(
                       margin: const EdgeInsets.fromLTRB(10, 2, 10, 2),
                       decoration: BoxDecoration(
-                          border: Border.all(width: 2.0,color: Colors.blue.shade200),
+                          border: Border.all(width: 2.0,color: Colors.black26),
                           borderRadius: const BorderRadius.all(Radius.circular(30))
                       ),
-                      child: const Icon(FontAwesomeIcons.facebook,size: 45,color: Colors.blueAccent,),
+                      child: const Icon(FontAwesomeIcons.globe,size: 45,color: Colors.black,),
                     ),
                   ),
                   InkWell(
@@ -142,16 +164,17 @@ class details extends StatelessWidget {
               ),
 
             ),
+            Divider(
+
+            ),
               const Text("Konum",style: TextStyle(fontSize: 25),),
-            const Text("Kültür, Atatürk Cd. No:34, 33010 İçel Merkez/Mersin",style: TextStyle(fontSize: 18), ),
+             Text("${Muze['Adres']}",style: TextStyle(fontSize: 18), ),
+            Divider(
 
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                   MyApp1(),
-
-              ],
-            )
+            ),
+             Container(
+                 alignment: Alignment.center,
+                 child: MyApp1(Longitude: Muze['Longitude'], Latitude: Muze['Latitude'],))
             
 
 
@@ -162,6 +185,46 @@ class details extends StatelessWidget {
 
 
     );
+  }
+
+Widget  getList(){
+      return   Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+
+          Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  Text("Bilet fiyati : ${Muze['price']} ",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                  ),
+                  if(Muze['price']!='ÜCRETSİZ ')
+                    Text("₺",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                    ),
+                ],
+              )
+
+          ),
+          Divider(
+
+          ),
+          Container(
+
+              padding: EdgeInsets.only(left: 10,bottom: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Açılış/Kapanış Saatleri: ",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                  ),
+                  Text("Açılış Saati: ${Muze['open']}"),
+                  Text("Kapanış Saati: ${Muze['close']}"),
+                  Text("Gişe Kapanış Saati: ${Muze['gate']}")
+                ],
+              )
+
+          ),
+        ],
+      );
   }
 }
 

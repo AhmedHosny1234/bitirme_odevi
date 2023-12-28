@@ -3,10 +3,12 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:untitled/screens/teeeest.dart';
 
 import 'HD.dart';
+
 import 'apis.dart';
-import 'list.dart';
+
 import 'namaz.dart';
 
 class MyApp extends StatelessWidget {
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const SecondRoute()),
+                              MaterialPageRoute(builder: (context) =>   GetList( type: 'Müzler',)),
                             );
                           },
 
@@ -56,7 +58,7 @@ class MyApp extends StatelessWidget {
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const SecondRoute()),
+                              MaterialPageRoute(builder: (context) =>   GetList( type: 'Müzler',)),
                             );
                           },
                         ),
@@ -74,7 +76,7 @@ class MyApp extends StatelessWidget {
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const SecondRoute()),
+                              MaterialPageRoute(builder: (context) =>   GetList( type: 'Müzler',)),
                             );
                           },
                         ),
@@ -105,7 +107,7 @@ class MyApp extends StatelessWidget {
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const SecondRoute()),
+                              MaterialPageRoute(builder: (context) =>  GetList( type: 'Müzler',)),
                             );
                           },
                         ),
@@ -124,7 +126,7 @@ class MyApp extends StatelessWidget {
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const SecondRoute()),
+                              MaterialPageRoute(builder: (context) =>   GetList( type: 'Müzler',)),
                             );
                           },
                         ),
@@ -194,8 +196,10 @@ class MyApp extends StatelessWidget {
                             size: 75,
                           ),
                           onTap: (){
-                            print("The icon is clicked");
-                          },
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>   GetList( type: 'Müzler',)),
+                            );                          },
                         ),
                         Container(
                           child: const Text("Türceme",

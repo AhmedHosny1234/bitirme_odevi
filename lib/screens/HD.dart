@@ -93,27 +93,28 @@ class HavaState extends State<Hava> {
             ),
 
             Container(
+              width: double.infinity,
               decoration: const BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.all(Radius.circular(20))
               ),
-              margin: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(5),
               padding: const EdgeInsets.all(10),
               child: Row(children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Text("Beklenen Hadise : ${HD[0]['description']}",
-                      style: const TextStyle(color: Colors.white, fontSize: 18),),
+                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                    ),
                     Text("Nem (%)	 : ${HD[0]['humidity']}",
-                      style: const TextStyle(color: Colors.white, fontSize: 18),),
+                      style: const TextStyle(color: Colors.white, fontSize: 16),),
                     Text("En Düşük	 : ${HD[0]['min']}",
-                      style: const TextStyle(color: Colors.white, fontSize: 18),),
+                      style: const TextStyle(color: Colors.white, fontSize: 16),),
                     Text("En Yüksek	 : ${HD[0]['max']} °C.",
-                      style: const TextStyle(color: Colors.white, fontSize: 18),),
+                      style: const TextStyle(color: Colors.white, fontSize: 16),),
                   ],),
-                const SizedBox(width: 85,),
+
                 Container(
 
                   child: Column(

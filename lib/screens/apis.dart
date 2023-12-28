@@ -25,13 +25,15 @@ class _apiState extends State<api> {
   List<dynamic> PH=[];
   late Position position;
 
+
+
   @override
   initState()  {
 
-    _determinePosition();
 
-    fetchusers();
+      _determinePosition();
 
+      fetchusers();
 
   }
 
@@ -69,21 +71,13 @@ class _apiState extends State<api> {
              subtitle: Text("$ilac 0${ph['phone']}",style: const TextStyle(fontSize: 15)),
              trailing:  Text("${ph['uzak'].toStringAsFixed(1)} KM ",style: const TextStyle(fontSize: 18)),
             onTap: (){
-
               _launchURL( PH[index]['loc']);
             },
            );
          }
 
-
-
       ),
 
-      floatingActionButton: FloatingActionButton(onPressed: (){
-
-
-
-      },),
     );
   }
 
@@ -101,11 +95,9 @@ class _apiState extends State<api> {
         HttpHeaders.authorizationHeader: 'apikey 0cFf61NxNpeEL503h6QxXF:2qZL2FNKkBK1HKudkafaHa',
       },
     );
-    print("object");
-    
-
 
     final body=response.body;
+
     final json=jsonDecode(body);
     setState(() {
 
@@ -140,10 +132,7 @@ class _apiState extends State<api> {
 
 
 
-  /// Determine the current position of the device.
-  ///
-  /// When the location services are not enabled or permissions
-  /// are denied the `Future` will return an error.
+
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;

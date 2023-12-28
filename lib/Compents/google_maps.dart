@@ -5,16 +5,24 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
 class MyApp1 extends StatefulWidget {
-  const MyApp1({super.key});
 
+  final double Longitude,Latitude;
+
+
+     MyApp1 ( { required this.Longitude , required this.Latitude});
   @override
-  State createState() => _MyAppState();
+  State createState() => _MyAppState(Longitude: Longitude, Latitude: Latitude,);
 }
 
-class _MyAppState extends State {
+class _MyAppState extends State<MyApp1> {
+
+   double Longitude,Latitude;
+  _MyAppState({required this.Longitude,required this.Latitude});
   late GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(36.795037,34.626539);
+
+
+
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -22,6 +30,7 @@ class _MyAppState extends State {
 
   @override
   Widget build(BuildContext context) {
+
     return  SizedBox(
 
             width: 400,
@@ -31,13 +40,13 @@ class _MyAppState extends State {
 
               onMapCreated: _onMapCreated,
               initialCameraPosition: CameraPosition(
-                target: _center,
+                target: LatLng(Latitude,Longitude),
                 zoom: 14.0,
               ),
               markers: {
-                const Marker(
+                 Marker(
                   markerId: MarkerId('Sydney'),
-                  position: LatLng(36.795037,34.626539),
+                  position: LatLng(Latitude,Longitude),
                 )
               },
             ),);
