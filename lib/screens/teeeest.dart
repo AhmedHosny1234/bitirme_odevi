@@ -37,7 +37,7 @@ class GetList extends StatelessWidget {
                  ),
                  backgroundColor: const Color(0xFF0C2E51),
                  title:  Column(children: [
-                   Center(child: Text("Müzler",style: TextStyle(color: Colors.white), textAlign: TextAlign.center)),
+                   Center(child: Text("${type}",style: TextStyle(color: Colors.white), textAlign: TextAlign.center)),
                    Center(child: Text("Sayi ${snapshot.data!.docs.length}",style: TextStyle(color: Colors.white), textAlign: TextAlign.center)),
 
                  ],)
@@ -62,8 +62,11 @@ class GetList extends StatelessWidget {
                                Column(
                                  mainAxisAlignment: MainAxisAlignment.start,
                                  children: [
-                                    Text("${snapshot.data!.docs[num]['Name']}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
+                                    SizedBox(
+                                      width:250,
+                                      child: Text("${snapshot.data!.docs[num]['Name']}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
                                    ),),
+                                    ),
                                    const SizedBox(height: 10,),
                                     Row(
                                      mainAxisAlignment: MainAxisAlignment.start,

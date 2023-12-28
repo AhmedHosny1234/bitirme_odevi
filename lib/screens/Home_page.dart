@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>   GetList( type: 'Müzler',)),
+                              MaterialPageRoute(builder: (context) =>   GetList( type: 'antik_kentler',)),
                             );
                           },
                         ),

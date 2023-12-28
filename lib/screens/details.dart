@@ -81,8 +81,11 @@ class details extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
 
                     children: [
-                       Text("${Muze['Name']} ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
+                       SizedBox(
+                         width: 250,
+                         child: Text("${Muze['Name']} ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold
                       ),),
+                       ),
                       const SizedBox(height: 2,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -118,52 +121,13 @@ class details extends StatelessWidget {
 
               ),
             if(Muze['dates'])
-            getList(),
+              getList(),
 
 
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
 
-                  InkWell(
-                    onTap: (){
-                      final Uri url = Uri.parse(Muze['link']);
 
-                      launchUrl(url);
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.fromLTRB(10, 2, 10, 2),
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 2.0,color: Colors.black26),
-                          borderRadius: const BorderRadius.all(Radius.circular(30))
-                      ),
-                      child: const Icon(FontAwesomeIcons.globe,size: 45,color: Colors.black,),
-                    ),
-                  ),
-                  InkWell(
-                    child: Container(
-                      margin: const EdgeInsets.fromLTRB(10, 2, 10, 2),
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 2.0,color: Colors.green.shade200),
-                          borderRadius: const BorderRadius.all(Radius.circular(30))
-                      ),
-                      child: const Icon(FontAwesomeIcons.whatsapp,size: 45,color: Colors.green,),
-                    ),
-                  ),
-                  
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(10, 2, 10, 2),
-    decoration: BoxDecoration(
-    border: Border.all(width: 2.0,color: Colors.lightBlue.shade200),
-    borderRadius: const BorderRadius.all(Radius.circular(30))
-    ),
-                    child: const Icon(Icons.phone,size: 45,color: Colors.blue,),
-                  ),
-                ],
-              ),
 
-            ),
+
             Divider(
 
             ),
@@ -221,6 +185,61 @@ Widget  getList(){
                   Text("Gişe Kapanış Saati: ${Muze['gate']}")
                 ],
               )
+
+          ),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+
+                InkWell(
+                  onTap: (){
+                    final Uri url = Uri.parse(Muze['link']);
+
+                    launchUrl(url);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(10, 2, 10, 2),
+                    decoration: BoxDecoration(
+                        border: Border.all(width: 2.0,color: Colors.black26),
+                        borderRadius: const BorderRadius.all(Radius.circular(30))
+                    ),
+                    child: const Icon(FontAwesomeIcons.globe,size: 45,color: Colors.black,),
+                  ),
+                ),
+                InkWell(
+                  onTap: () async{
+
+                    final Uri url = Uri.parse('https://www.google.com/maps/search/?api=1&query=${Muze['Latitude']},${Muze['Longitude']}');
+                    if ( await launchUrl(url)) {
+                      throw Exception('Could not launch $url');
+                    }
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(10, 2, 10, 2),
+                    decoration: BoxDecoration(
+                        border: Border.all(width: 2.0,color: Colors.green.shade200),
+                        borderRadius: const BorderRadius.all(Radius.circular(30))
+                    ),
+                    child: const Icon(FontAwesomeIcons.directions,size: 45,color: Colors.green,),
+                  ),
+                ),
+
+                InkWell(
+                  onTap: (){
+                    launch("tel://${Muze['phone']}");
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(10, 2, 10, 2),
+                    decoration: BoxDecoration(
+                        border: Border.all(width: 2.0,color: Colors.lightBlue.shade200),
+                        borderRadius: const BorderRadius.all(Radius.circular(30))
+                    ),
+                    child: const Icon(Icons.phone,size: 45,color: Colors.blue,),
+                  ),
+                ),
+              ],
+            ),
 
           ),
         ],
