@@ -4,6 +4,7 @@ import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled/screens/teeeest.dart';
+import 'package:untitled/screens/tur.dart';
 
 import 'HD.dart';
 
@@ -19,16 +20,16 @@ class MyApp extends StatelessWidget {
     return  Scaffold(
 
         appBar: AppBar(title: Row(
-          children: [const SizedBox (width: 80),Image.asset("images/Untitled design (1).png", scale: 5,)],
-        ) ,backgroundColor: const Color(0xFF0C2E51) ,leading: const Icon(Icons.search ,size: 30,color: Colors.white,) ,),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Image.asset("images/Untitled design (1).png", scale: 5,)],) ,backgroundColor: const Color(0xFF0C2E51) ),
         body:    SingleChildScrollView(
           child: Column(
             children: [
               const CarouselSliderWithDots(),
               const SizedBox(height: 10,),
 
-              const Text("Katgori",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold ),),
-              const SizedBox(height: 10,),
+              const Text("Kategoriler",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold ),),
+              Divider(),
               Row(children: [
                 const SizedBox(width:20 ),
                 Flexible(
@@ -44,11 +45,11 @@ class MyApp extends StatelessWidget {
                           },
 
                         ),
-                        const Text("Müzler", textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold ),),
+                        const Text("Müzler", textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ),),
                       ]
                   ),
                 ),
-                const SizedBox(width:40 ),
+                const SizedBox(width:30 ),
                 Flexible(
                   child: Column(
                       children: [
@@ -62,11 +63,11 @@ class MyApp extends StatelessWidget {
                             );
                           },
                         ),
-                        const Text("antik kentler", textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold ),),
+                        const Text("antik kentler", textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold ),),
                       ]
                   ),
                 ),
-                const SizedBox(width: 40,),
+                const SizedBox(width: 30,),
                 Flexible(
                   child: Column(
                       children: [
@@ -76,12 +77,12 @@ class MyApp extends StatelessWidget {
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>   GetList( type: 'Müzler',)),
+                              MaterialPageRoute(builder: (context) =>   GetList( type: 'Kaleler',)),
                             );
                           },
                         ),
-                        Container(
-                          child: const Text("Kalelerv ve tarihi yaplilar",
+                        SizedBox(
+                          child: const Text("Kaleler ve tarihi yaplilar",
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 18
                                 ,fontWeight: FontWeight.bold ),
@@ -145,7 +146,7 @@ class MyApp extends StatelessWidget {
 
 
               ],),
-              const SizedBox(height: 10,),
+              Divider(),
               const Text("Servisler",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold ),),
               Row(children: [
                 const SizedBox(width:20 ),
@@ -198,7 +199,7 @@ class MyApp extends StatelessWidget {
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>   GetList( type: 'Müzler',)),
+                              MaterialPageRoute(builder: (context) =>   translate()),
                             );                          },
                         ),
                         Container(

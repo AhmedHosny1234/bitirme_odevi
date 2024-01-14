@@ -125,9 +125,6 @@ class details extends StatelessWidget {
 
 
 
-
-
-
             Divider(
 
             ),
@@ -136,18 +133,28 @@ class details extends StatelessWidget {
             Divider(
 
             ),
-             Container(
-                 alignment: Alignment.center,
-                 child: MyApp1(Longitude: Muze['Longitude'], Latitude: Muze['Latitude'],))
-            
 
+            /* Stack(
+               children: [
+                 Container(
+                     alignment: Alignment.center,
+                     child: MyApp1(Longitude: Muze['Longitude'], Latitude: Muze['Latitude'],)),
 
-
+               ],
+             ),*/
+            SizedBox(
+              width: double.infinity,
+              height: 250,
+              child: Stack(
+                children: [
+                  Container(
+                      child: MyApp1(Longitude: Muze['Longitude'], Latitude: Muze['Latitude'],)),
+                ],
+              ),
+            ),
           ],
     ),
        ),
-
-
     );
   }
 
@@ -170,10 +177,8 @@ Widget  getList(){
 
           ),
           Divider(
-
           ),
           Container(
-
               padding: EdgeInsets.only(left: 10,bottom: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,7 +190,6 @@ Widget  getList(){
                   Text("Gişe Kapanış Saati: ${Muze['gate']}")
                 ],
               )
-
           ),
           Container(
             child: Row(
@@ -224,7 +228,6 @@ Widget  getList(){
                     child: const Icon(FontAwesomeIcons.directions,size: 45,color: Colors.green,),
                   ),
                 ),
-
                 InkWell(
                   onTap: (){
                     launch("tel://${Muze['phone']}");
@@ -240,10 +243,8 @@ Widget  getList(){
                 ),
               ],
             ),
-
           ),
         ],
       );
   }
 }
-

@@ -8,7 +8,6 @@ class MyApp1 extends StatefulWidget {
 
   final double Longitude,Latitude;
 
-
      MyApp1 ( { required this.Longitude , required this.Latitude});
   @override
   State createState() => _MyAppState(Longitude: Longitude, Latitude: Latitude,);
@@ -20,10 +19,6 @@ class _MyAppState extends State<MyApp1> {
   _MyAppState({required this.Longitude,required this.Latitude});
   late GoogleMapController mapController;
 
-
-
-
-
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
@@ -31,7 +26,10 @@ class _MyAppState extends State<MyApp1> {
   @override
   Widget build(BuildContext context) {
 
-    return  SizedBox(
+    return
+
+        Container(
+          child: SizedBox(
 
             width: 400,
             height: 250,
@@ -44,12 +42,13 @@ class _MyAppState extends State<MyApp1> {
                 zoom: 14.0,
               ),
               markers: {
-                 Marker(
+                Marker(
                   markerId: MarkerId('Sydney'),
                   position: LatLng(Latitude,Longitude),
                 )
               },
-            ),);
+            ),),
+    );
 
 
 

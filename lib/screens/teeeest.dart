@@ -14,6 +14,7 @@ class GetList extends StatelessWidget {
   GetList({
     required this.type
 });
+
    late CollectionReference Muze=FirebaseFirestore.instance.collection('Mersin').doc('catgory').collection('${type}');
   @override
   Widget build(BuildContext context) {
@@ -54,13 +55,15 @@ class GetList extends StatelessWidget {
                          Container(
 
                            decoration: BoxDecoration(
-                               border: Border.all(color: Colors.blueAccent)
+                               border: Border.all(color: Colors.blueAccent ),
+                             borderRadius: BorderRadius.circular(10),
                            ),
                            child: Row(
                              mainAxisAlignment: MainAxisAlignment.end,
                              children: [
                                Column(
                                  mainAxisAlignment: MainAxisAlignment.start,
+                                 crossAxisAlignment: CrossAxisAlignment.start,
                                  children: [
                                     SizedBox(
                                       width:250,
@@ -74,7 +77,7 @@ class GetList extends StatelessWidget {
                                        SizedBox(
                                            width: 240,
                                            child: Text("${snapshot.data!.docs[num]['Adres']}"
-                                         ,style:TextStyle(fontSize: 12),
+                                         ,style:TextStyle(fontSize: 14),
                                          maxLines: 4,
                                          overflow: TextOverflow.ellipsis,)),
                                        Icon(
@@ -146,9 +149,12 @@ class GetList extends StatelessWidget {
 
                                  ],
                                ),
-                               Container(
-                                   padding: const EdgeInsets.only(right: 7),
-                                   child:  Image( image: NetworkImage("${snapshot.data!.docs[num]['ResimURL ']}"),width: 120,height: 150,)),
+                               SizedBox(
+                                 width: 120,height: 150,
+                                 child: Container(
+                                     padding: const EdgeInsets.only(right: 7),
+                                     child:  Image( image: NetworkImage("${snapshot.data!.docs[num]['ResimURL ']}"),width: 120,height: 150,)),
+                               ),
 
                              ],
 
@@ -179,5 +185,9 @@ class GetList extends StatelessWidget {
          }
         });
   }
+
+
+
+
 }
 
