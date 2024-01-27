@@ -34,26 +34,26 @@ dependencies:
   sqflite: ^2.3.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
   carousel_slider: ^4.2.1
   dots_indicator: ^3.0.0
   line_icons: ^2.0.3
   flutter_launcher_icons: ^0.13.1
   font_awesome_flutter: ^10.6.0
   expand_widget: ^3.1.1
-  google_maps_flutter: ^2.5.0
+  google_maps_flutter: ^2.5.3
   http: ^1.1.0
-  url_launcher: ^6.1.14
+  url_launcher: ^6.2.3
   geolocator: ^10.1.0
   geocoding: ^2.1.1
   firebase_core: ^2.24.2
-  cloud_firestore: ^4.13.6
+  cloud_firestore: ^4.14.0
   flutter_share: ^2.0.0
   share_plus: ^7.2.1
   flutter_translate: ^4.0.4
   flutter_localization: ^0.2.0
   translator_plus: ^1.0.1
-  flutter_circle_flags_svg: ^0.0.3
+  flutter_circle_flags_svg: 0.0.3
 
 dev_dependencies:
   flutter_test:

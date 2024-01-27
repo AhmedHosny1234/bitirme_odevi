@@ -148,7 +148,7 @@ class details extends StatelessWidget {
               child: Stack(
                 children: [
                   Container(
-                      child: MyApp1(Longitude: Muze['Longitude'], Latitude: Muze['Latitude'],)),
+                      child: MyApp1(Longitude: double.parse('${Muze['Longitude']}') , Latitude: double.parse('${ Muze['Latitude']}'),)),
                 ],
               ),
             ),
